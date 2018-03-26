@@ -20,14 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'z6=5rpy8@cqi9*21u)q0pn-!9y#niss4v@-gep94dsd^x$f6nt'
-)
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'z6=5rpy8@cqi9*21u)q0pn-!9y#niss4v@-gep94dsd^x$f6nt')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )           #DEBUG = False
 
-ALLOWED_HOSTS = ['nell-blog.herokuapp.com']
+ALLOWED_HOSTS = ['nell-blog.herokuapp.com'] #['127.0.0.1']##['127.0.0.1'] #
 
 
 # Application definition
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,5 +126,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 
