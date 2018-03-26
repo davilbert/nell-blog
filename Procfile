@@ -1,1 +1,1 @@
-web: gunicorn ivanovDjangoProject.wsgi --log-file -
+web: gunicorn KiyamovaNDjangoProject.wsgi --log-file -
